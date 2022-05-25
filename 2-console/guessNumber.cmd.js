@@ -3,11 +3,14 @@
 const readline = require('node:readline');
 const { stdin: input, stdout: output } = require('node:process');
 
+const min = 0;
+const max = 100;
+
 async function guessNumber() {
     const rl = readline.createInterface({ input, output });
-    const hiddenNum = Math.floor(Math.random() * 100);
+    const hiddenNum = Math.floor(Math.random() * (max - min)) + min;
 
-    console.log('Загадано число в диапазоне от 0 до 100');
+    console.log(`Загадано число в диапазоне от ${min} до ${max}`);
     for await (const line of rl) {
         const num = +line;
 
