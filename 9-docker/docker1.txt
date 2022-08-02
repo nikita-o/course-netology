@@ -1,0 +1,92 @@
+$ docker pull busybox                                                                                                                                         ✔ 
+Using default tag: latest
+latest: Pulling from library/busybox
+50783e0dfb64: Pull complete 
+Digest: sha256:ef320ff10026a50cf5f0213d35537ce0041ac1d96e9b7800bafd8bc9eff6c693
+Status: Downloaded newer image for busybox:latest
+docker.io/library/busybox:latest
+
+$ docker run --name pinger -d busybox ping -c 7 netology.ru                                                                                               125 ✘ 
+4fc3ad62b87be699fdb77bd43cfda3c985bf69cb1190059532ec8962180824c1
+
+$ docker ps -a                                                                                                                                                ✔ 
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                      PORTS     NAMES
+4fc3ad62b87b   busybox   "ping -c 7 netology.…"   44 seconds ago   Exited (0) 38 seconds ago             pinger
+
+$ docker logs pinger                                                                                                                                          ✔ 
+PING netology.ru (188.114.98.160): 56 data bytes
+64 bytes from 188.114.98.160: seq=0 ttl=54 time=16.555 ms
+64 bytes from 188.114.98.160: seq=1 ttl=54 time=16.678 ms
+64 bytes from 188.114.98.160: seq=2 ttl=54 time=16.669 ms
+64 bytes from 188.114.98.160: seq=3 ttl=54 time=16.716 ms
+64 bytes from 188.114.98.160: seq=4 ttl=54 time=17.003 ms
+64 bytes from 188.114.98.160: seq=5 ttl=54 time=16.986 ms
+64 bytes from 188.114.98.160: seq=6 ttl=54 time=16.698 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 16.555/16.757/17.003 ms
+
+$ docker start pinger                                                                                                                                         ✔ 
+pinger
+
+
+$ docker ps -a                                                                                                                                                ✔ 
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS                     PORTS     NAMES
+4fc3ad62b87b   busybox   "ping -c 7 netology.…"   44 minutes ago   Exited (0) 2 minutes ago             pinger
+
+$ docker logs pinger                                                                                                                                          ✔ 
+PING netology.ru (188.114.98.160): 56 data bytes
+64 bytes from 188.114.98.160: seq=0 ttl=54 time=16.555 ms
+64 bytes from 188.114.98.160: seq=1 ttl=54 time=16.678 ms
+64 bytes from 188.114.98.160: seq=2 ttl=54 time=16.669 ms
+64 bytes from 188.114.98.160: seq=3 ttl=54 time=16.716 ms
+64 bytes from 188.114.98.160: seq=4 ttl=54 time=17.003 ms
+64 bytes from 188.114.98.160: seq=5 ttl=54 time=16.986 ms
+64 bytes from 188.114.98.160: seq=6 ttl=54 time=16.698 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 16.555/16.757/17.003 ms
+PING netology.ru (188.114.98.160): 56 data bytes
+64 bytes from 188.114.98.160: seq=0 ttl=54 time=16.583 ms
+64 bytes from 188.114.98.160: seq=1 ttl=54 time=16.585 ms
+64 bytes from 188.114.98.160: seq=2 ttl=54 time=17.104 ms
+64 bytes from 188.114.98.160: seq=3 ttl=54 time=16.679 ms
+64 bytes from 188.114.98.160: seq=4 ttl=54 time=16.559 ms
+64 bytes from 188.114.98.160: seq=5 ttl=54 time=16.634 ms
+64 bytes from 188.114.98.160: seq=6 ttl=54 time=16.810 ms
+
+--- netology.ru ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 16.559/16.707/17.104 ms
+
+$ docker rm pinger                                                                                                                                            ✔ 
+pinger
+
+$ docker image rm busybox                                                                                                                                     ✔ 
+Untagged: busybox:latest
+Untagged: busybox@sha256:ef320ff10026a50cf5f0213d35537ce0041ac1d96e9b7800bafd8bc9eff6c693
+Deleted: sha256:7a80323521ccd4c2b4b423fa6e38e5cea156600f40cd855e464cc52a321a24dd
+Deleted: sha256:084326605ab6715ca698453e530e4d0319d4e402b468894a06affef944b4ef04
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
